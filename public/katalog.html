@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090612" />
+  <title>Beli Akun — Gragon Store</title>
+  <meta name="description" content="Jelajahi katalog akun digital di Gragon Store. Filter berdasarkan kategori, harga, dan platform." />
+  <link rel="stylesheet" href="css/style.css?v=20261024f" />
+  <link rel="stylesheet" href="css/marketplace.css?v=20261024f" />
+  <link rel="stylesheet" href="css/gragon.css?v=20261024f" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">
+        <img src="img/logo-mark.png" alt="Gragon Store" class="navbar__logo-mark" />
+        <span data-site-name>Gragon Store</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="/" class="navbar__link">Beranda</a>
+        <a href="/katalog.html" class="navbar__link">Beli Akun</a>
+        <a href="/jual-akun.html" class="navbar__link">Jual Akun</a>
+        <a href="/kalkulator.html" class="navbar__link">Kalkulator FF</a>
+        <a href="/cara-kerja.html" class="navbar__link">Cara Kerja</a>
+        <a href="/bantuan.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <a href="/jual-akun.html" class="btn btn-primary btn-sm">Jual Akun</a>
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <a href="/" class="mobile-drawer__link">Beranda</a>
+      <a href="/katalog.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="/jual-akun.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="/kalkulator.html" class="mobile-drawer__link">Kalkulator FF</a>
+      <a href="/cara-kerja.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="/bantuan.html" class="mobile-drawer__link">FAQ</a>
+      <a href="/lacak-pesanan.html" class="mobile-drawer__link">Lacak Pesanan</a>
+    </div>
+  </div>
+
+  <section class="section--tight" style="padding-top:36px;">
+    <div class="container">
+      <span class="eyebrow">Katalog Akun</span>
+      <h1 style="margin-bottom: 6px;">Beli Akun</h1>
+      <p>Gunakan filter di samping untuk menemukan akun yang sesuai kebutuhanmu.</p>
+    </div>
+  </section>
+
+  <!-- ═══ Banner Platform (klik untuk filter cepat) ═══ -->
+  <section class="section--tight">
+    <div class="container">
+      <div class="platform-banner" data-platform-banner>
+        <div class="skeleton" style="height:38px; width:100%;"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <button class="btn filter-drawer-toggle" data-filter-toggle><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg> Filter</button>
+
+      <div class="shop-layout">
+        <!-- ═══ Filter Panel ═══ -->
+        <aside class="filter-panel" data-filter-panel>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h3>Filter</h3>
+            <button class="mobile-drawer__close" data-filter-close aria-label="Tutup filter" style="display:none;"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+          </div>
+
+          <div class="filter-group">
+            <label>Cari</label>
+            <input type="search" data-shop-search placeholder="Nama akun, platform..." />
+          </div>
+
+          <div class="filter-group">
+            <label>Platform</label>
+            <div class="filter-checkbox-list" data-platform-filter-list></div>
+          </div>
+
+          <div class="filter-group">
+            <label>Kategori</label>
+            <div class="filter-checkbox-list" data-category-filter-list>
+              <div class="skeleton" style="height:16px; width:70%; margin-bottom:8px;"></div>
+              <div class="skeleton" style="height:16px; width:50%;"></div>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <label>Rentang Harga (Rp)</label>
+            <div class="filter-price-row">
+              <input type="number" data-min-price placeholder="Min" min="0" />
+              <span>—</span>
+              <input type="number" data-max-price placeholder="Max" min="0" />
+            </div>
+            <button class="btn btn-sm btn-block" style="margin-top:10px;" data-apply-price>Terapkan Harga</button>
+          </div>
+
+          <button class="btn btn-ghost btn-block" data-reset-filters>Reset Semua Filter</button>
+        </aside>
+        <div class="filter-drawer-backdrop" data-filter-backdrop></div>
+
+        <!-- ═══ Grid ═══ -->
+        <div>
+          <div class="shop-toolbar">
+            <span class="shop-toolbar__count" data-shop-count>Memuat...</span>
+            <div class="shop-toolbar__right">
+              <select data-sort-select aria-label="Urutkan">
+                <option value="newest">Terbaru</option>
+                <option value="price_asc">Harga: Rendah ke Tinggi</option>
+                <option value="price_desc">Harga: Tinggi ke Rendah</option>
+                <option value="popular">Populer</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="account-grid" data-shop-grid></div>
+
+          <div style="text-align:center; margin-top:32px;">
+            <button class="btn btn-primary" data-load-more style="display:none;">Muat Lebih Banyak</button>
+          </div>
+
+          <!-- ═══ Akun Terjual (SOLD) — terpisah dari listing utama ═══ -->
+          <section class="sold-section" data-sold-section style="display:none;">
+            <div class="sold-section__head">
+              <h3>Akun Terjual <span class="badge badge--sold" data-sold-count>0</span></h3>
+              <button type="button" class="btn btn-sm btn-ghost" data-sold-toggle aria-expanded="true">Sembunyikan</button>
+            </div>
+            <p class="sold-section__hint">Akun berikut sudah terjual dan tidak bisa dibeli/ditawar lagi.</p>
+            <div class="account-grid" data-sold-grid></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand"><img src="img/logo-mark.png" alt="Gragon Store" class="footer__logo-mark" /><span data-site-name>Gragon Store</span></div>
+          <p>Marketplace akun digital yang simpel dan terpercaya.</p>
+        </div>
+        <div>
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="/katalog.html">Beli Akun</a></li>
+            <li><a href="/jual-akun.html">Jual Akun</a></li>
+            <li><a href="/cara-kerja.html">Cara Kerja</a></li>
+            <li><a href="/bantuan.html">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Bantuan</h4>
+          <ul>
+            <li><a href="/bantuan.html">Pertanyaan Umum</a></li>
+            <li><a href="/cara-kerja.html">Panduan Transaksi</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> Gragon Store. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+    <!-- ═══ Bottom Navigation (mobile) ═══ -->
+  <nav class="bottom-nav" aria-label="Navigasi utama">
+      <a href="/" class="bottom-nav__item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"></path></svg><span>Beranda</span></a>
+      <a href="/katalog.html" class="bottom-nav__item is-active"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg><span>Beli</span></a>
+      <a href="/jual-akun.html" class="bottom-nav__item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.58a2.43 2.43 0 0 0 0-3.42Z"></path><circle cx="7.5" cy="7.5" r="1.4"></circle></svg><span>Jual</span></a>
+      <a href="/bantuan.html" class="bottom-nav__item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg><span>FAQ</span></a>
+  </nav>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.js"></script>
+  <script src="js/supabase-client.js?v=20261024f"></script>
+  <script src="js/app.js?v=20261024f"></script>
+  <script src="js/shop.js?v=20261024f"></script>
+  <script src="js/realtime.js?v=20261024f"></script>
+</body>
+</html>
