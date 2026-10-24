@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090612" />
+  <title>Admin — Gragon Store</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="css/style.css?v=20261024f" />
+  <link rel="stylesheet" href="css/marketplace.css?v=20261024f" />
+  <link rel="stylesheet" href="css/admin.css?v=20261024f" />
+  <link rel="stylesheet" href="css/gragon.css?v=20261024f" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+</head>
+<body class="admin-body">
+
+  <div class="admin-shell" data-admin-shell style="display:none;">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo"><img src="img/logo-mark.png" alt="Gragon Store" class="admin-sidebar__logo-mark" /><span>Gragon Store</span></div>
+      <button class="admin-nav-link is-active" data-tab-btn="dashboard"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="9" rx="1.5"></rect><rect x="14" y="3" width="7" height="5" rx="1.5"></rect><rect x="14" y="12" width="7" height="9" rx="1.5"></rect><rect x="3" y="16" width="7" height="5" rx="1.5"></rect></svg><span>Dashboard</span></button>
+      <button class="admin-nav-link" data-tab-btn="accounts"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg><span>Akun</span></button>
+      <button class="admin-nav-link" data-tab-btn="offers"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.58a2.43 2.43 0 0 0 0-3.42Z"></path><circle cx="7.5" cy="7.5" r="1.4"></circle></svg><span>Tawaran</span></button>
+      <button class="admin-nav-link" data-tab-btn="sell-requests"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-6l-2 3h-4l-2-3H2"></path><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11Z"></path></svg><span>Pengajuan Jual</span></button>
+      <button class="admin-nav-link" data-tab-btn="transactions"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"></path><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"></path><path d="M9 13h6"></path><path d="M9 17h6"></path></svg><span>Transaksi</span></button>
+      <button class="admin-nav-link" data-tab-btn="categories"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1"></path><path d="M4 20a2 2 0 0 1-2-2v-6.5A1.5 1.5 0 0 1 3.5 10h17a1.5 1.5 0 0 1 1.4 2.05l-2.13 5.2A2 2 0 0 1 17.93 20Z"></path></svg><span>Kategori</span></button>
+      <button class="admin-nav-link" data-tab-btn="banners"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><circle cx="8.5" cy="10" r="1.6"></circle><path d="m21 16-5-5-4.5 4.5"></path></svg><span>Poster</span></button>
+      <button class="admin-nav-link" data-tab-btn="settings"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"></path></svg><span>Pengaturan</span></button>
+      <div class="admin-sidebar__spacer"></div>
+      <div class="admin-sidebar__logout">
+        <button class="admin-nav-link" data-logout-btn><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg><span>Keluar</span></button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <section data-tab-panel="dashboard">
+        <div class="admin-topbar"><h1>Dashboard</h1></div>
+        <div class="stat-grid" data-dashboard-stats>
+          <div class="stat-card"><div class="stat-card__label">Total Akun</div><div class="stat-card__value">—</div></div>
+          <div class="stat-card"><div class="stat-card__label">Tersedia</div><div class="stat-card__value">—</div></div>
+          <div class="stat-card"><div class="stat-card__label">Terjual</div><div class="stat-card__value">—</div></div>
+          <div class="stat-card"><div class="stat-card__label">Pengajuan Pending</div><div class="stat-card__value">—</div></div>
+          <div class="stat-card"><div class="stat-card__label">Tawaran Pending</div><div class="stat-card__value">—</div></div>
+          <div class="stat-card"><div class="stat-card__label">Total Transaksi</div><div class="stat-card__value">—</div></div>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-panel__head"><h2>Cari Akun</h2></div>
+          <p style="margin-top:-6px; margin-bottom:14px;">Masukkan Kode Akun yang dibuat otomatis oleh sistem (contoh: <span class="mono">GRG-7F3K9X</span>) untuk langsung menemukan akun tersebut.</p>
+          <form data-account-lookup-form style="display:flex; gap:10px; flex-wrap:wrap;">
+            <input type="text" name="code" placeholder="Contoh: GRG-7F3K9X" style="flex:1; min-width:220px; text-transform:uppercase;" autocomplete="off" />
+            <button type="submit" class="btn btn-primary">Cari Akun</button>
+          </form>
+          <div data-account-lookup-result style="margin-top:16px;"></div>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-panel__head"><h2>Selamat Datang</h2></div>
+          <p>Gunakan menu di samping untuk mengelola akun, tawaran, pengajuan jual, transaksi, kategori, dan pengaturan situs.</p>
+        </div>
+      </section>
+
+      <section data-tab-panel="accounts" style="display:none;">
+        <div class="admin-topbar">
+          <h1>Kelola Akun</h1>
+          <button class="btn btn-primary" data-open-account-drawer>+ Tambah Akun</button>
+        </div>
+        <div class="admin-panel">
+          <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end; margin-bottom:16px;">
+            <div class="field" style="max-width:340px; margin:0;">
+              <label for="acc-table-search">Cari (Kode Akun / Nama)</label>
+              <input type="text" id="acc-table-search" data-accounts-table-search placeholder="GRG-7F3K9X atau nama akun" autocomplete="off" />
+            </div>
+            <button class="btn btn-sm" style="background:var(--danger-soft); color:var(--danger);" data-cleanup-sold-accounts title="Hapus semua akun berstatus Sold beserta transaksi terkaitnya sekaligus">Bersihkan Akun Terjual</button>
+          </div>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Foto</th><th>Kode</th><th>Nama</th><th>Platform</th><th>Harga</th><th>Status</th><th>Featured</th><th>Aksi</th></tr>
+              </thead>
+              <tbody data-accounts-table><tr><td colspan="8" class="admin-empty">Memuat...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section data-tab-panel="offers" style="display:none;">
+        <div class="admin-topbar">
+          <h1>Tawaran Harga</h1>
+          <button class="btn btn-sm" style="background:var(--danger-soft); color:var(--danger);" data-cleanup-offers title="Hapus semua tawaran berstatus Selesai/Ditolak sekaligus">Bersihkan yang Selesai</button>
+        </div>
+        <div class="tab-row" data-offers-filter>
+          <button class="tab-btn is-active" data-status="">Semua</button>
+          <button class="tab-btn" data-status="PENDING">Pending</button>
+          <button class="tab-btn" data-status="ACCEPTED">Diterima</button>
+          <button class="tab-btn" data-status="REJECTED">Ditolak</button>
+          <button class="tab-btn" data-status="COMPLETED">Selesai</button>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Akun</th><th>Harga Asli</th><th>Tawaran</th><th>Pembeli</th><th>WhatsApp</th><th>Status</th><th>Aksi</th></tr>
+              </thead>
+              <tbody data-offers-table><tr><td colspan="7" class="admin-empty">Memuat...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section data-tab-panel="sell-requests" style="display:none;">
+        <div class="admin-topbar">
+          <h1>Pengajuan Jual Akun</h1>
+          <button class="btn btn-sm" style="background:var(--danger-soft); color:var(--danger);" data-cleanup-sell-requests title="Hapus semua pengajuan berstatus Diterima/Ditolak sekaligus">Bersihkan yang Selesai</button>
+        </div>
+        <div class="tab-row" data-sell-requests-filter>
+          <button class="tab-btn is-active" data-status="">Semua</button>
+          <button class="tab-btn" data-status="PENDING">Pending</button>
+          <button class="tab-btn" data-status="REVIEW">Review</button>
+          <button class="tab-btn" data-status="ACCEPTED">Diterima</button>
+          <button class="tab-btn" data-status="REJECTED">Ditolak</button>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Nama Akun</th><th>Penjual</th><th>WhatsApp</th><th>Harga Diinginkan</th><th>Status</th><th>Aksi</th></tr>
+              </thead>
+              <tbody data-sell-requests-table><tr><td colspan="6" class="admin-empty">Memuat...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section data-tab-panel="transactions" style="display:none;">
+        <div class="admin-topbar">
+          <h1>Transaksi Pembelian</h1>
+          <button class="btn btn-sm" style="background:var(--danger-soft); color:var(--danger);" data-cleanup-transactions title="Hapus semua transaksi Selesai/Ditolak/Kedaluwarsa sekaligus">Bersihkan yang Selesai</button>
+        </div>
+        <div class="tab-row" data-transactions-filter>
+          <button class="tab-btn is-active" data-status="">Semua</button>
+          <button class="tab-btn" data-status="PENDING_PAYMENT">Menunggu Konfirmasi</button>
+                    <button class="tab-btn" data-status="PAID">Terverifikasi</button>
+          <button class="tab-btn" data-status="REJECTED">Ditolak</button>
+          <button class="tab-btn" data-status="EXPIRED">Kedaluwarsa</button>
+        </div>
+        <div class="admin-panel">
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr><th>Invoice</th><th>Akun</th><th>Pembeli</th><th>Harga</th><th>Status</th><th>Dibuat</th><th>Aksi</th></tr>
+              </thead>
+              <tbody data-transactions-table><tr><td colspan="7" class="admin-empty">Memuat...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section data-tab-panel="categories" style="display:none;">
+        <div class="admin-topbar">
+          <h1>Kategori</h1>
+        </div>
+        <div class="admin-panel">
+          <form data-add-category-form style="display:flex; gap:10px; margin-bottom:20px;">
+            <input type="text" name="name" placeholder="Nama kategori baru" required style="flex:1;" />
+            <button type="submit" class="btn btn-primary">Tambah</button>
+          </form>
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead><tr><th>Nama</th><th>Slug</th><th>Aksi</th></tr></thead>
+              <tbody data-categories-table><tr><td colspan="3" class="admin-empty">Memuat...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section data-tab-panel="banners" style="display:none;">
+        <div class="admin-topbar">
+          <h1>Poster / Banner Homepage</h1>
+        </div>
+        <div class="admin-panel">
+          <p style="margin:0 0 16px; font-size:0.88rem; color:var(--ink-soft);">Poster akan tampil sebagai carousel otomatis di homepage, tepat di atas "Jelajahi Kategori". Tidak ada batas jumlah poster — hanya poster yang <strong>Aktif</strong> yang tampil ke publik, sesuai urutan di bawah.</p>
+
+          <label class="banner-upload-drop" data-banner-drop for="banner-file-input">
+            <svg class="icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin:0 auto 8px; color:var(--accent);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            <p style="margin:0; font-weight:600; font-size:0.88rem;">Klik atau seret gambar ke sini untuk menambah poster</p>
+            <p style="margin:4px 0 0; font-size:0.76rem; color:var(--ink-soft);">Bisa pilih beberapa gambar sekaligus (JPG/PNG/WEBP, maks 5MB per gambar)</p>
+            <input type="file" id="banner-file-input" data-banner-file-input accept="image/jpeg,image/png,image/webp" multiple />
+          </label>
+
+          <div class="banner-admin-grid" data-banners-grid>
+            <p class="admin-empty">Memuat...</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section data-tab-panel="settings" style="display:none;">
+        <div class="admin-topbar"><h1>Pengaturan Situs</h1></div>
+        <div class="admin-panel">
+          <form data-settings-form>
+            <div class="form-grid-2">
+              <div class="field">
+                <label for="set-site-name">Nama Situs</label>
+                <input type="text" id="set-site-name" name="site_name" />
+              </div>
+              <div class="field">
+                <label for="set-admin-wa">Nomor WhatsApp Admin</label>
+                <input type="text" id="set-admin-wa" name="admin_whatsapp" placeholder="6282357961890" readonly />
+                <span class="field__hint">Dikunci ke 082357961890. Untuk mengganti, ubah ADMIN_WA di js/app.js.</span>
+              </div>
+            </div>
+            <div class="field">
+              <label for="set-footer">Teks Footer</label>
+              <input type="text" id="set-footer" name="footer_text" />
+            </div>
+            <h3 style="margin:22px 0 4px;">Template Pesan WhatsApp</h3>
+            <p style="font-size:0.85rem; margin-bottom:14px;">Gunakan placeholder seperti [NAMA AKUN], [HARGA], [NAMA], dst. Kosongkan untuk memakai template bawaan.</p>
+            <div class="field">
+              <label for="tpl-buy">Template Beli Sekarang</label>
+              <textarea id="tpl-buy" name="wa_template_buy" rows="6"></textarea>
+            </div>
+            <div class="field">
+              <label for="tpl-offer">Template Tawar Harga</label>
+              <textarea id="tpl-offer" name="wa_template_offer" rows="6"></textarea>
+            </div>
+            <div class="field">
+              <label for="tpl-sell">Template Jual Akun</label>
+              <textarea id="tpl-sell" name="wa_template_sell" rows="6"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+          </form>
+        </div>
+
+        <div class="admin-panel">
+          <div class="admin-panel__head"><h2>Pengaturan Pesanan</h2></div>
+          <p style="margin-top:-6px; margin-bottom:14px;">Pembelian berjalan manual lewat WhatsApp admin: pembayaran disepakati di chat, lalu kamu menekan Approve di tab Transaksi setelah pembayaran diterima.</p>
+          <form data-payment-settings-form>
+            <div class="field" style="max-width:360px;">
+              <label for="set-expiry">Masa Tahan Akun per Pesanan (menit)</label>
+              <input type="number" id="set-expiry" name="payment_expiration_minutes" min="5" max="1440" />
+              <span class="field__hint">Akun otomatis dilepas kembali jika pesanan tidak dikonfirmasi dalam waktu ini.</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan Pengaturan Pesanan</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="admin-drawer-overlay" data-account-drawer>
+    <div class="admin-drawer">
+      <div class="admin-drawer__head">
+        <h2 data-drawer-title>Tambah Akun</h2>
+        <button class="modal__close" data-close-drawer aria-label="Tutup"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <form data-account-form>
+        <input type="hidden" name="id" />
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="acc-name">Nama Akun</label>
+            <input type="text" id="acc-name" name="name" required maxlength="200" />
+          </div>
+          <div class="field">
+            <label for="acc-platform">Platform</label>
+            <input type="text" id="acc-platform" name="platform" required maxlength="100" list="acc-platform-list" placeholder="Contoh: Mobile Legends" />
+            <datalist id="acc-platform-list">
+              <option value="Mobile Legends"></option>
+              <option value="Free Fire"></option>
+              <option value="PUBG"></option>
+              <option value="Genshin Impact"></option>
+              <option value="eFootball"></option>
+              <option value="Valorant"></option>
+              <option value="Instagram"></option>
+              <option value="Netflix"></option>
+            </datalist>
+            <span class="field__hint">Gunakan nama yang sama dengan filter platform di halaman Beli Akun agar akun mudah ditemukan.</span>
+          </div>
+        </div>
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="acc-category">Kategori</label>
+            <select id="acc-category" name="category_id"><option value="">Pilih kategori</option></select>
+          </div>
+          <div class="field">
+            <label for="acc-price">Harga Normal (Rp)</label>
+            <input type="number" id="acc-price" name="price" required min="0" />
+          </div>
+        </div>
+
+        <fieldset class="admin-fieldset">
+          <legend>Diskon / Harga Coret</legend>
+          <label class="checkbox-row">
+            <input type="checkbox" name="discount_active" data-discount-toggle />
+            <span>Aktifkan diskon untuk akun ini</span>
+          </label>
+          <div class="form-grid-2" data-discount-fields style="display:none; margin-top:10px;">
+            <div class="field">
+              <label for="acc-discount-price">Harga Diskon (Rp)</label>
+              <input type="number" id="acc-discount-price" name="discount_price" min="0" />
+              <span class="field__hint" data-discount-percent-preview></span>
+            </div>
+            <div class="field">
+              <label for="acc-promo-label">Label Promo (opsional)</label>
+              <input type="text" id="acc-promo-label" name="promo_label" maxlength="60" placeholder="Contoh: HEMAT 30%" />
+            </div>
+            <div class="field">
+              <label for="acc-discount-start">Mulai (opsional)</label>
+              <input type="datetime-local" id="acc-discount-start" name="discount_starts_at" />
+            </div>
+            <div class="field">
+              <label for="acc-discount-end">Berakhir (opsional)</label>
+              <input type="datetime-local" id="acc-discount-end" name="discount_ends_at" />
+            </div>
+          </div>
+          <span class="field__hint">Harga transaksi otomatis memakai harga diskon selama aktif — bukan cuma tampilan.</span>
+        </fieldset>
+
+        <div class="field">
+          <label for="acc-username">Username / ID (opsional)</label>
+          <input type="text" id="acc-username" name="username" maxlength="200" />
+        </div>
+        <div class="field">
+          <label for="acc-desc">Deskripsi</label>
+          <textarea id="acc-desc" name="description" rows="3" maxlength="3000"></textarea>
+        </div>
+        <div class="field">
+          <label for="acc-details">Detail</label>
+          <textarea id="acc-details" name="details" rows="3" maxlength="3000"></textarea>
+        </div>
+        <div class="field">
+          <label for="acc-features">Fitur</label>
+          <textarea id="acc-features" name="features" rows="2" maxlength="3000"></textarea>
+        </div>
+        <div class="form-grid-2">
+          <div class="field">
+            <label for="acc-status">Status</label>
+            <select id="acc-status" name="status">
+              <option value="AVAILABLE">Available</option>
+              <option value="SOLD">Sold</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="checkbox-row" style="margin-top:30px;">
+              <input type="checkbox" name="featured" />
+              <span>Tandai sebagai Featured</span>
+            </label>
+          </div>
+        </div>
+
+        <fieldset class="admin-fieldset">
+          <legend>Data Login Akun (Rahasia)</legend>
+          <p style="font-size:0.8rem; opacity:0.75; margin:0 0 10px;">Tidak pernah ditampilkan ke publik. Hanya dapat dibaca pembeli setelah pesanan berstatus <strong>Selesai</strong>.</p>
+          <div class="field">
+            <label for="acc-email-login">Email Akun</label>
+            <input type="email" id="acc-email-login" name="account_email" autocomplete="off" placeholder="akun@example.com" />
+          </div>
+          <div class="field">
+            <label for="acc-password-login">Password Akun</label>
+            <div style="display:flex; gap:8px;">
+              <input type="password" id="acc-password-login" name="account_password" autocomplete="new-password" style="flex:1;" />
+              <button type="button" class="btn btn-sm" data-toggle-password="acc-password-login">Show</button>
+            </div>
+            <span class="field__hint">Kosongkan saat edit jika tidak ingin mengubah password yang tersimpan.</span>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label>Foto Akun</label>
+          <div class="image-manage-grid" data-account-images></div>
+          <div class="dropzone dropzone--overlay" data-account-dropzone style="padding:16px;">
+            <input type="file" data-account-photo-input accept="image/*" multiple />
+            <p style="margin:0; font-weight:600; font-size:0.88rem;">Klik atau seret foto untuk menambah</p>
+          </div>
+          <label class="btn btn-sm" style="margin-top:8px; position:relative; overflow:hidden; display:inline-flex;">Cara lain: pilih 1 foto
+            <input type="file" data-account-photo-input-alt accept="image/*" style="position:absolute; inset:0; width:100%; height:100%; opacity:0; font-size:0;" />
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:10px;">Simpan Akun</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-drawer-overlay" data-tx-drawer>
+    <div class="admin-drawer">
+      <div class="admin-drawer__head">
+        <h2>Detail Transaksi</h2>
+        <button class="modal__close" data-close-tx-drawer aria-label="Tutup"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+
+      <div class="admin-panel" style="box-shadow:none; border:none; padding:0;">
+        <h3 style="margin-top:0;">Detail Akun</h3>
+        <div class="payment-block__row"><span>Nama</span><strong data-tx-account-name></strong></div>
+        <div class="payment-block__row"><span>ID</span><strong class="mono" data-tx-account-code></strong></div>
+        <div class="payment-block__row"><span>Platform</span><strong data-tx-platform></strong></div>
+        <div class="payment-block__row"><span>Kategori</span><strong data-tx-category></strong></div>
+        <div class="payment-block__row"><span>Harga</span><strong data-tx-price></strong></div>
+
+        <h3>Data Pembeli</h3>
+        <div class="payment-block__row"><span>Nama</span><strong data-tx-buyer-name></strong></div>
+        <div class="payment-block__row"><span>Catatan</span><strong data-tx-note></strong></div>
+        <div class="payment-block__row"><span>WhatsApp</span><strong data-tx-whatsapp></strong></div>
+
+        <h3>Data Pesanan</h3>
+        <div class="payment-block__row"><span>Nomor Pesanan</span><strong class="mono" data-tx-invoice></strong></div>
+        <div class="payment-block__row"><span>Metode</span><strong data-tx-method>Manual via WhatsApp</strong></div>
+        <div class="payment-block__row"><span>Status</span><strong data-tx-status-label></strong></div>
+
+        <div data-tx-rejection-wrap style="display:none; margin-bottom:16px;">
+          <h3>Alasan Penolakan Sebelumnya</h3>
+          <p data-tx-rejection-reason style="font-size:0.85rem;"></p>
+        </div>
+
+        <div data-tx-actions style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+          <button type="button" class="btn btn-primary" data-tx-approve-btn><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> Approve Pembayaran</button>
+          <button type="button" class="btn" style="background:var(--danger-soft); color:var(--danger);" data-tx-reject-btn><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg> Tolak Pembayaran</button>
+        </div>
+
+        <div data-tx-delivery-wrap style="display:none; margin-top:16px;">
+          <div class="field">
+            <label for="tx-delivery-status">Status Penyerahan Akun</label>
+            <select id="tx-delivery-status" data-tx-delivery-select>
+              <option value="PROCESSING">Diproses</option>
+              <option value="WAITING_DELIVERY">Menunggu Penyerahan</option>
+              <option value="DELIVERED">Sudah Diserahkan</option>
+            </select>
+          </div>
+          <p style="font-size:0.8rem; opacity:0.75; margin:8px 0 12px;">Data akun (email &amp; password) baru ditampilkan ke pembeli setelah pesanan diselesaikan lewat tombol di bawah — bukan otomatis saat pembayaran diverifikasi.</p>
+          <div data-tx-complete-wrap>
+            <button type="button" class="btn btn-primary" data-tx-complete-btn style="width:100%;"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg> SELESAIKAN PESANAN — Tampilkan Data Akun</button>
+          </div>
+          <div data-tx-completed-badge style="display:none;">
+            <span class="badge badge--success"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Pesanan Selesai — data akun sudah ditampilkan ke pembeli</span>
+          </div>
+          <button type="button" class="btn btn-sm" style="width:100%; margin-top:14px; background:var(--danger-soft); color:var(--danger); display:none;" data-tx-delete-btn title="Hanya bisa dihapus jika transaksi sudah Selesai/Ditolak/Kedaluwarsa"><svg class="icon " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path></svg> Hapus Transaksi Ini</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Konfirmasi Approve ═══ -->
+  <div class="modal-overlay" data-tx-approve-modal>
+    <div class="modal">
+      <div class="modal__header">
+        <h3>Konfirmasi Approve</h3>
+        <button class="modal__close" data-modal-close aria-label="Tutup"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <p data-tx-approve-confirm-text style="margin-top:0;"></p>
+      <div style="display:flex; gap:10px; margin-top:16px;">
+        <button type="button" class="btn btn-block" data-modal-close>Batal</button>
+        <button type="button" class="btn btn-primary btn-block" data-tx-approve-confirm-btn>Konfirmasi Approve</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Form Tolak Pembayaran ═══ -->
+  <div class="modal-overlay" data-tx-reject-modal>
+    <div class="modal">
+      <div class="modal__header">
+        <h3>Tolak Pembayaran</h3>
+        <button class="modal__close" data-modal-close aria-label="Tutup"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <form data-tx-reject-form>
+        <div class="field">
+          <label for="tx-reject-reason">Alasan Penolakan</label>
+          <select id="tx-reject-reason-select" data-tx-reject-reason-select>
+            <option value="">— Pilih alasan cepat (opsional) —</option>
+            <option value="Nominal pembayaran tidak sesuai.">Nominal pembayaran tidak sesuai.</option>
+            
+            <option value="Pembayaran belum ditemukan.">Pembayaran belum ditemukan.</option>
+            <option value="Informasi pembayaran tidak sesuai.">Informasi pembayaran tidak sesuai.</option>
+          </select>
+          <textarea id="tx-reject-reason" name="rejection_reason" rows="3" required placeholder="Tuliskan alasan penolakan..." style="margin-top:8px;"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Tolak Pembayaran</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.js"></script>
+  <script src="js/supabase-client.js?v=20261024f"></script>
+  <script src="js/app.js?v=20261024f"></script>
+  <script src="js/table-responsive.js?v=20261024f"></script>
+  <script src="js/admin.js?v=20261024f"></script>
+</body>
+</html>
