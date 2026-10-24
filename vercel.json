@@ -1,0 +1,30 @@
+{
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [{ "source": "/", "destination": "/home" }],
+  "redirects": [
+    { "source": "/index", "destination": "/", "permanent": true },
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/shop", "destination": "/katalog", "permanent": true },
+    { "source": "/shop.html", "destination": "/katalog", "permanent": true },
+    { "source": "/product", "destination": "/akun", "permanent": true },
+    { "source": "/product.html", "destination": "/akun", "permanent": true },
+    { "source": "/sell", "destination": "/jual-akun", "permanent": true },
+    { "source": "/sell.html", "destination": "/jual-akun", "permanent": true },
+    { "source": "/calculator", "destination": "/kalkulator", "permanent": true },
+    { "source": "/calculator.html", "destination": "/kalkulator", "permanent": true },
+    { "source": "/payment", "destination": "/pesanan", "permanent": true },
+    { "source": "/payment.html", "destination": "/pesanan", "permanent": true },
+    { "source": "/track", "destination": "/lacak-pesanan", "permanent": true },
+    { "source": "/track.html", "destination": "/lacak-pesanan", "permanent": true },
+    { "source": "/faq", "destination": "/bantuan", "permanent": true },
+    { "source": "/faq.html", "destination": "/bantuan", "permanent": true },
+    { "source": "/how-it-works", "destination": "/cara-kerja", "permanent": true },
+    { "source": "/how-it-works.html", "destination": "/cara-kerja", "permanent": true },
+    { "source": "/login", "destination": "/masuk", "permanent": true },
+    { "source": "/login.html", "destination": "/masuk", "permanent": true },
+    { "source": "/admin", "destination": "/dashboard", "permanent": true },
+    { "source": "/admin.html", "destination": "/dashboard", "permanent": true }
+  ]
+}
