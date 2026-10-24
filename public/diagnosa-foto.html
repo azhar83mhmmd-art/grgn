@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Diagnosa Foto — Gragon Store</title>
+  <style>
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto,sans-serif;background:#0d0818;color:#ece6ff;padding:20px;max-width:760px;margin:0 auto}
+    h1{font-size:1.3rem;margin:8px 0 4px} p.sub{color:#a99bd0;font-size:.9rem;margin:0 0 16px}
+    button{background:linear-gradient(90deg,#7c3aed,#c026d3);color:#fff;border:0;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer;font-size:1rem}
+    button:disabled{opacity:.5}
+    .step{border:1px solid #2e2250;border-radius:12px;padding:12px 14px;margin:10px 0;background:#150e28;word-break:break-word}
+    .ok{border-color:#16a34a}.bad{border-color:#e11d48;background:#2a0f1c}.warn{border-color:#d97706}
+    .t{font-weight:700}.ok .t::before{content:"✅ "}.bad .t::before{content:"❌ "}.warn .t::before{content:"⚠️ "}
+    .d{font-size:.85rem;color:#c9bdea;margin-top:4px;white-space:pre-wrap}
+    pre{background:#08040f;padding:10px;border-radius:8px;overflow:auto;font-size:.8rem}
+  </style>
+</head>
+<body>
+  <h1>Diagnosa Foto Akun &amp; Poster</h1>
+  <p class="sub">Buka halaman ini setelah login admin (di browser yang sama dengan dashboard). Klik tombol, lalu kirim hasilnya (screenshot atau tombol Salin).</p>
+  <button id="run">Mulai Diagnosa</button> <button id="copy" style="display:none;background:#2e2250">Salin hasil</button>
+  <div id="out"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.js"></script>
+  <script src="js/supabase-client.js?v=20261024f"></script>
+  <script>
+    const out = document.getElementById('out');
+    const lines = [];
+    function step(kind, title, detail) {
+      const d = document.createElement('div');
+      d.className = 'step ' + kind;
+      d.innerHTML = '<div class="t"></div><div class="d"></div>';
+      d.querySelector('.t').textContent = title;
+      d.querySelector('.d').textContent = detail || '';
+      out.appendChild(d);
+      lines.push(`[${kind.toUpperCase()}] ${title}${detail ? ' — ' + detail : ''}`);
+    }
+    const err = (e) => e ? `${e.message || e}${e.code ? ' (kode ' + e.code + ')' : ''}${e.hint ? ' | hint: ' + e.hint : ''}${e.statusCode ? ' | status ' + e.statusCode : ''}` : '';
+    function imgLoads(url) {
+      return new Promise((r) => { const i = new Image(); i.onload = () => r(true); i.onerror = () => r(false); i.src = url; setTimeout(() => r(false), 15000); });
+    }
+    // PNG 1x1 valid
+    const PNG = Uint8Array.from(atob('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=='), c => c.charCodeAt(0));
+
+    document.getElementById('run').addEventListener('click', async (ev) => {
+      ev.target.disabled = true; out.innerHTML = ''; lines.length = 0;
+      let testPath = null, testRowId = null;
+      try {
+        // 1. Sesi
+        const { data: { session } } = await supabaseClient.auth.getSession();
+        if (!session) { step('bad', '1. Login admin', 'Belum login. Buka /masuk.html, login dulu, lalu ulangi halaman ini.'); return; }
+        step('ok', '1. Login', session.user.email);
+
+        // 2. Role admin
+        const { data: prof, error: pe } = await supabaseClient.from('profiles').select('role').eq('id', session.user.id).maybeSingle();
+        if (pe) step('bad', '2. Baca tabel profiles', err(pe));
+        else if (!prof || prof.role !== 'admin') step('bad', '2. Role admin', `Role akun ini: ${prof ? prof.role : 'tidak ada baris profiles'}. Jalankan: update public.profiles set role='admin' where id='${session.user.id}';`);
+        else step('ok', '2. Role admin', 'OK');
+
+        // 3. Upload ke storage
+        testPath = `accounts/_diagnosa-${Date.now()}.png`;
+        const up = await supabaseClient.storage.from('account-images').upload(testPath, new Blob([PNG], { type: 'image/png' }), { contentType: 'image/png', upsert: false });
+        if (up.error) {
+          step('bad', '3. Upload ke bucket account-images', err(up.error) + '\n→ Jika "Bucket not found": buat bucket / jalankan fix-storage.sql.\n→ Jika "row-level security": jalankan fix-storage.sql dan pastikan langkah 2 OK.');
+          testPath = null;
+        } else step('ok', '3. Upload ke bucket account-images', testPath);
+
+        // 4. URL publik bisa dibuka
+        if (testPath) {
+          const { data: pu } = supabaseClient.storage.from('account-images').getPublicUrl(testPath);
+          const url = pu.publicUrl;
+          let status = '?';
+          try { const r = await fetch(url, { cache: 'no-store' }); status = r.status; } catch (e) { status = 'gagal fetch: ' + e.message; }
+          const ok = await imgLoads(url);
+          if (ok) step('ok', '4. URL foto publik bisa dibuka', url);
+          else step('bad', '4. URL foto publik TIDAK bisa dibuka', `HTTP: ${status}\n${url}\n→ Bucket belum Public. Supabase → Storage → account-images → Edit bucket → centang Public (atau jalankan fix-storage.sql).`);
+        }
+
+        // 5. Baca tabel account_images (kolom)
+        const ai = await supabaseClient.from('account_images').select('*').order('created_at', { ascending: false }).limit(5);
+        if (ai.error) step('bad', '5. Baca tabel account_images', err(ai.error) + '\n→ Jalankan fix-account-images.sql.');
+        else {
+          const cols = ai.data[0] ? Object.keys(ai.data[0]).join(', ') : '(tabel kosong)';
+          step(ai.data.length ? 'ok' : 'warn', `5. Tabel account_images: ${ai.data.length} baris terbaru terbaca`, `Kolom: ${cols}`);
+          if (ai.data.length) {
+            const first = ai.data[0];
+            const u = first.image_url || first.url;
+            if (!u) step('bad', '5b. Baris foto tidak punya image_url', JSON.stringify(first) + '\n→ Jalankan fix-account-images.sql.');
+            else {
+              const ok = await imgLoads(u);
+              step(ok ? 'ok' : 'bad', '5b. Foto tercatat terakhir ' + (ok ? 'bisa dibuka' : 'TIDAK bisa dibuka'), u);
+            }
+          }
+        }
+
+        // 6. Embed akun + foto (cara katalog memuat foto)
+        const em = await supabaseClient.from('accounts').select('id,name,account_images(id,image_url,is_primary)').limit(50);
+        if (em.error) step('bad', '6. Muat akun beserta foto (dipakai katalog)', err(em.error) + '\n→ Relasi account_images→accounts belum ada. Jalankan fix-account-images.sql.');
+        else {
+          const withPhoto = em.data.filter(a => (a.account_images || []).length > 0).length;
+          step(withPhoto ? 'ok' : 'warn', `6. Katalog memuat ${em.data.length} akun, ${withPhoto} di antaranya punya foto`,
+            withPhoto ? '' : 'Belum ada akun yang punya foto tercatat. Artinya upload/penyimpanan foto belum pernah berhasil → lihat langkah 3 & 7.');
+        }
+
+        // 7. Tes tulis baris foto (pakai akun pertama), lalu hapus
+        const a1 = await supabaseClient.from('accounts').select('id').limit(1);
+        if (a1.error || !a1.data.length) step('warn', '7. Tes simpan baris foto', 'Tidak ada akun untuk dites.');
+        else {
+          const ins = await supabaseClient.from('account_images').insert({ account_id: a1.data[0].id, image_url: 'https://example.com/_diagnosa.png', is_primary: false }).select('id').single();
+          if (ins.error) step('bad', '7. Simpan baris ke account_images', err(ins.error) + '\n→ Jalankan fix-account-images.sql (dan pastikan langkah 2 OK).');
+          else { testRowId = ins.data.id; step('ok', '7. Simpan baris ke account_images', 'OK (baris tes dihapus lagi)'); }
+        }
+      } catch (e) {
+        step('bad', 'Error tak terduga', err(e));
+      } finally {
+        // bersih-bersih
+        try { if (testRowId) await supabaseClient.from('account_images').delete().eq('id', testRowId); } catch (e) {}
+        try { if (testPath) await supabaseClient.storage.from('account-images').remove([testPath]); } catch (e) {}
+        document.getElementById('run').disabled = false;
+        document.getElementById('copy').style.display = '';
+        step('ok', 'Selesai', 'Kirim hasil di atas (screenshot / tombol Salin).');
+      }
+    });
+    document.getElementById('copy').addEventListener('click', () => navigator.clipboard.writeText(lines.join('\n')).then(() => alert('Hasil disalin.')));
+  </script>
+</body>
+</html>
