@@ -1,0 +1,10 @@
+{
+  "name": "gragon-store",
+  "version": "2.0.0",
+  "description": "Gragon Store - Marketplace jual beli akun game & digital (Supabase + Static Frontend + Vercel)",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve public",
+    "vercel-build": "echo 'Static site, tidak ada build step.'"
+  }
+}
