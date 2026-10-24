@@ -1,0 +1,567 @@
+/* ============================================================
+   Gragon Store — admin.css
+   Layout dashboard admin: login, sidebar, tabel, cards, form
+   ============================================================ */
+
+.admin-body {
+  background: var(--bg);
+  min-height: 100vh;
+}
+
+/* ── Login screen ── */
+.admin-login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--gradient-hero);
+}
+
+.admin-login__card {
+  background: var(--card);
+  border: var(--border-w) solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  padding: clamp(24px, 6vw, 36px);
+  width: 100%;
+  max-width: 380px;
+}
+
+.admin-login__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.admin-login__logo .navbar__logo-mark { width: 36px; height: 36px; }
+
+.admin-sidebar__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-sidebar__logo-mark {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex-shrink: 0;
+  background: var(--bg-raised);
+  border-radius: 16px;
+  padding: 2px;
+}
+
+.admin-login__error {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.admin-login__error.is-visible { display: block; }
+
+/* ── Shell layout ── */
+.admin-shell {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  background: #0D0818;
+  color: var(--ink);
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.admin-sidebar__logo {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.admin-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+}
+
+.admin-nav-link .icon { flex-shrink: 0; }
+
+.admin-nav-link:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.admin-nav-link.is-active { background: var(--accent); color: #fff; box-shadow: 0 6px 16px rgba(139, 92, 246, 0.35); }
+
+.admin-sidebar__spacer { flex: 1; }
+
+.admin-sidebar__logout {
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding-top: 14px;
+  margin-top: 10px;
+}
+
+.admin-main {
+  padding: 28px 32px 60px;
+  overflow-x: hidden;
+}
+
+.admin-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-topbar h1 { margin: 0; font-size: 1.5rem; }
+
+/* ── Dashboard stat cards ── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: var(--border-w-sm) solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+.stat-card__label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.stat-card__value {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+/* ── Panels / cards ── */
+.admin-panel {
+  background: var(--card);
+  border: var(--border-w-sm) solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-sm);
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.admin-panel__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.admin-panel__head h2 { margin: 0; font-size: 1.15rem; }
+
+/* ── Table ── */
+.admin-table-wrap { overflow-x: auto; }
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.admin-table th {
+  text-align: left;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  padding: 10px 12px;
+  border-bottom: var(--border-w-sm) solid var(--border);
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--bg-raised);
+  vertical-align: middle;
+}
+
+.admin-table tr:last-child td { border-bottom: none; }
+
+.admin-table td.mono { font-family: var(--font-mono); font-size: 0.82rem; }
+
+.admin-table__actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.table-thumb {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  border: 2px solid var(--border);
+  object-fit: cover;
+  background: var(--bg-raised);
+}
+
+/* ── Cari Akun (dashboard lookup) ── */
+.admin-lookup-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: 22px;
+  background: var(--bg-raised);
+}
+
+/* ── Tabs (filter status) ── */
+.tab-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.tab-btn {
+  border: 1px solid var(--border);
+  background: var(--card);
+  border-radius: 999px;
+  padding: 8px 16px;
+  min-height: 40px;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.tab-btn.is-active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* ── Drawer form (add/edit account) ── */
+.admin-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 3, 12, 0.5);
+  display: none;
+  z-index: 90;
+  justify-content: flex-end;
+}
+
+.admin-drawer-overlay.is-open { display: flex; }
+
+.admin-drawer {
+  background: var(--card);
+  width: min(520px, 100vw);
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-left: 1px solid var(--border);
+  box-shadow: -20px 0 45px rgba(0, 0, 0, 0.14);
+  padding: clamp(16px, 5vw, 26px);
+}
+
+.admin-drawer__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-manage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(80px, 100%), 1fr));
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.image-manage-item {
+  position: relative;
+  aspect-ratio: 1;
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.image-manage-item img { width: 100%; height: 100%; object-fit: cover; }
+
+.image-manage-item__remove {
+  position: absolute;
+  top: 3px; right: 3px;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--danger);
+  color: #fff;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+
+.image-manage-item__star {
+  position: absolute;
+  bottom: 3px; left: 3px;
+  background: rgba(255,255,255,0.9);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 0.65rem;
+  padding: 1px 5px;
+  cursor: pointer;
+}
+
+.image-manage-item.is-primary .image-manage-item__star { background: var(--gold); }
+
+/* ── Empty state small ── */
+.admin-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+  .admin-shell { grid-template-columns: 1fr; }
+  .admin-sidebar {
+    position: sticky;
+    top: 0;
+    height: auto;
+    max-height: none;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    align-items: center;
+    padding: 12px 10px;
+    gap: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .admin-sidebar__logo { display: none; }
+  .admin-sidebar__spacer { display: none; }
+  .admin-sidebar__logout {
+    border: none;
+    margin: 0;
+    padding: 0;
+    flex-shrink: 0;
+  }
+  .admin-nav-link { white-space: nowrap; flex-shrink: 0; }
+  .admin-main { padding: 18px clamp(12px, 4vw, 20px) 60px; }
+  .admin-topbar h1 { font-size: clamp(1.2rem, 5vw, 1.5rem); }
+}
+
+@media (max-width: 480px) {
+  .admin-topbar { flex-direction: column; align-items: stretch; }
+  .admin-topbar .btn { width: 100%; }
+  .admin-panel { padding: 16px; }
+  .stat-card__value { font-size: 1.5rem; }
+}
+
+/* ============================================================
+   Transaksi — drawer detail + badge status pembayaran
+   ============================================================ */
+[data-tx-drawer] .admin-drawer { max-width: 480px; }
+[data-tx-drawer] .payment-block__row { font-size: 0.86rem; }
+[data-tx-drawer] h3 { margin: 18px 0 6px; font-size: 0.95rem; }
+[data-tx-drawer] h3:first-child { margin-top: 0; }
+
+.tx-proof-img {
+  max-width: 100%;
+  border: var(--border-w-sm) solid var(--border);
+  border-radius: var(--radius);
+  cursor: zoom-in;
+}
+
+.tx-proof-img-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 3, 12, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 200;
+}
+.tx-proof-img-overlay.is-open { display: flex; }
+.tx-proof-img-overlay img { max-width: 100%; max-height: 90vh; border-radius: var(--radius); }
+
+/* ── Fieldset (diskon, kredensial akun) ── */
+.admin-fieldset {
+  border: var(--border-w-sm) solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin: 14px 0;
+}
+
+.admin-fieldset legend {
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0 6px;
+}
+
+.badge--success {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+/* ============================================================
+   Poster / Banner Homepage
+   ============================================================ */
+.banner-upload-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2px;
+  width: 100%;
+  min-height: 160px;
+  padding: 28px 20px;
+  margin-bottom: 20px;
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-raised);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  box-sizing: border-box;
+}
+
+.banner-upload-drop:hover,
+.banner-upload-drop:focus-within {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.banner-upload-drop.is-dragover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.banner-upload-drop .icon { display: block; }
+
+/* Sembunyikan input file secara aksesibel — klik ditangani oleh <label> */
+.banner-upload-drop input[type="file"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.banner-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.banner-admin-grid .admin-empty { grid-column: 1 / -1; }
+
+.banner-admin-card {
+  display: flex;
+  flex-direction: column;
+  border: var(--border-w-sm) solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.banner-admin-card.is-inactive { opacity: 0.55; }
+
+.banner-admin-card__img-wrap {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-raised);
+  overflow: hidden;
+}
+
+.banner-admin-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.banner-admin-card__body {
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.banner-admin-card__title {
+  font-weight: 700;
+  font-size: 0.92rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.banner-admin-card__meta {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.banner-admin-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.banner-admin-card__actions .btn-sm {
+  padding: 6px 10px;
+  min-height: 32px;
+  font-size: 0.78rem;
+}
+
+@media (max-width: 480px) {
+  .banner-upload-drop { padding: 22px 14px; min-height: 130px; }
+  .banner-admin-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+}
+
+/* Kotak upload foto akun: input file transparan menutupi seluruh kotak.
+   Tap/klik langsung mengenai input, jadi pemilih foto terbuka andal di HP. */
+.dropzone.dropzone--overlay { position: relative; overflow: hidden; }
+.dropzone.dropzone--overlay input[type="file"] {
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 0;
+  z-index: 2;
+}
