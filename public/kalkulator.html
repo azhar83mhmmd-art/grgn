@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#090612" />
+  <title>Kalkulator Harga Akun Free Fire — Gragon Store</title>
+  <meta name="description" content="Hitung estimasi kasar harga akun Free Fire berdasarkan level, rank, evo gun, bundle, emote, skin, item limited, event lama, vehicle skin, dan pet." />
+  <link rel="stylesheet" href="css/style.css?v=20261024f" />
+  <link rel="stylesheet" href="css/marketplace.css?v=20261024f" />
+  <link rel="stylesheet" href="css/calculator.css?v=20261024f" />
+  <link rel="stylesheet" href="css/gragon.css?v=20261024f" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon-192.png" />
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">
+        <img src="img/logo-mark.png" alt="Gragon Store" class="navbar__logo-mark" />
+        <span data-site-name>Gragon Store</span>
+      </a>
+      <nav class="navbar__links">
+        <a href="/" class="navbar__link">Beranda</a>
+        <a href="/katalog.html" class="navbar__link">Beli Akun</a>
+        <a href="/jual-akun.html" class="navbar__link">Jual Akun</a>
+        <a href="/kalkulator.html" class="navbar__link">Kalkulator FF</a>
+        <a href="/cara-kerja.html" class="navbar__link">Cara Kerja</a>
+        <a href="/bantuan.html" class="navbar__link">FAQ</a>
+      </nav>
+      <div class="navbar__actions">
+        <button class="navbar__menu-toggle" data-menu-toggle aria-label="Buka menu"><svg class="icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"></line><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="17" x2="20" y2="17"></line></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer" data-mobile-drawer>
+    <div class="mobile-drawer__backdrop" data-drawer-backdrop></div>
+    <div class="mobile-drawer__panel">
+      <button class="mobile-drawer__close" data-drawer-close aria-label="Tutup menu"><svg class="icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      <a href="/" class="mobile-drawer__link">Beranda</a>
+      <a href="/katalog.html" class="mobile-drawer__link">Beli Akun</a>
+      <a href="/jual-akun.html" class="mobile-drawer__link">Jual Akun</a>
+      <a href="/kalkulator.html" class="mobile-drawer__link">Kalkulator FF</a>
+      <a href="/cara-kerja.html" class="mobile-drawer__link">Cara Kerja</a>
+      <a href="/bantuan.html" class="mobile-drawer__link">FAQ</a>
+      <a href="/lacak-pesanan.html" class="mobile-drawer__link">Lacak Pesanan</a>
+    </div>
+  </div>
+
+  <section class="section--tight" style="padding-top:36px;">
+    <div class="container" style="max-width: 760px;">
+      <span class="eyebrow">Estimasi Cepat</span>
+      <h1 style="margin-bottom:6px;">Kalkulator Harga Akun Free Fire</h1>
+      <p>Isi data akun kamu untuk mendapatkan estimasi kasar harga jual. Hasil ini hanya perkiraan awal, bukan harga pasti.</p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container" style="max-width: 760px;">
+
+      <div class="calc-card">
+        <p style="margin:0; font-size:0.85rem;">Isi kondisi akunmu di bawah ini untuk melihat estimasi harganya. Ini murni estimasi kasar — bukan patokan harga pasti.</p>
+      </div>
+
+      <form data-calc-form class="calc-card" novalidate>
+        <h3 style="margin-bottom:16px;">Data Akun</h3>
+
+        <div class="form-grid-2">
+          <div class="field calc-field">
+            <label for="calc-level" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Level
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-level" name="level" min="0" step="1" value="0" data-calc-input />
+          </div>
+
+          <div class="field calc-field">
+            <label for="calc-rank" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 3 6v6c0 5 3.8 8.7 9 10 5.2-1.3 9-5 9-10V6Z"></path></svg>
+              Rank
+            </label>
+            <div class="calc-select-wrap">
+              <select id="calc-rank" name="rank" data-calc-rank-select>
+                <option value="1" data-rank-icon="bronze">Bronze</option>
+                <option value="2" data-rank-icon="silver">Silver</option>
+                <option value="3" data-rank-icon="gold">Gold</option>
+                <option value="4" data-rank-icon="platinum">Platinum</option>
+                <option value="5" data-rank-icon="diamond">Diamond</option>
+                <option value="6" data-rank-icon="heroic">Heroic</option>
+                <option value="7" data-rank-icon="master">Master</option>
+                <option value="8" data-rank-icon="grandmaster">Grandmaster</option>
+              </select>
+              <span class="calc-select-icon" data-calc-rank-icon aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <h4 class="calc-group-title">Evo Gun</h4>
+        <div class="form-grid-2">
+          <div class="field calc-field">
+            <label for="calc-evo1" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+              Evo Gun Lv.1–3
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-evo1" name="evo1" min="0" step="1" value="0" data-calc-input />
+          </div>
+          <div class="field calc-field">
+            <label for="calc-evo2" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+              Evo Gun Lv.4–6
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-evo2" name="evo2" min="0" step="1" value="0" data-calc-input />
+          </div>
+        </div>
+        <div class="field calc-field">
+          <label for="calc-evo3" class="calc-field-label">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="4"></circle><circle cx="12" cy="12" r="1"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+            Evo Gun Max
+          </label>
+          <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-evo3" name="evo3" min="0" step="1" value="0" data-calc-input />
+        </div>
+
+        <h4 class="calc-group-title">Kosmetik &amp; Item</h4>
+        <div class="form-grid-2">
+          <div class="field calc-field">
+            <label for="calc-bundle" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"></path></svg>
+              Bundle/Outfit
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-bundle" name="bundle" min="0" step="1" value="0" data-calc-input />
+          </div>
+          <div class="field calc-field">
+            <label for="calc-emote" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+              Emote
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-emote" name="emote" min="0" step="1" value="0" data-calc-input />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="field calc-field">
+            <label for="calc-skin" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="21" x2="21" y2="3"></line><path d="M6 18 3 21"></path><path d="m15 9 4-4"></path><path d="M11 13 8 16"></path></svg>
+              Skin Senjata
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-skin" name="skin" min="0" step="1" value="0" data-calc-input />
+          </div>
+          <div class="field calc-field">
+            <label for="calc-skin-rare" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              Skin Senjata Langka
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-skin-rare" name="skinRare" min="0" step="1" value="0" data-calc-input />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="field calc-field">
+            <label for="calc-limited" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 3 6 8 6-8"></path><path d="M2 9h20"></path><path d="M12 21 2 9l4-6h12l4 6Z"></path></svg>
+              Item Limited
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-limited" name="limited" min="0" step="1" value="0" data-calc-input />
+          </div>
+          <div class="field calc-field">
+            <label for="calc-event-old" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              Item Event Lama
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-event-old" name="eventOld" min="0" step="1" value="0" data-calc-input />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="field calc-field">
+            <label for="calc-vehicle-skin" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3 17V9l2-5h10l4 5v8"></path></svg>
+              Vehicle Skin
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-vehicle-skin" name="vehicleSkin" min="0" step="1" value="0" data-calc-input />
+          </div>
+          <div class="field calc-field">
+            <label for="calc-pet" class="calc-field-label">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="4"></circle><circle cx="6" cy="7" r="2"></circle><circle cx="18" cy="7" r="2"></circle><circle cx="3" cy="13" r="1.6"></circle><circle cx="21" cy="13" r="1.6"></circle></svg>
+              Pet
+            </label>
+            <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-pet" name="pet" min="0" step="1" value="0" data-calc-input />
+          </div>
+        </div>
+
+        <div class="field calc-field">
+          <label for="calc-pet-skin" class="calc-field-label">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="4"></circle><circle cx="6" cy="7" r="2"></circle><circle cx="18" cy="7" r="2"></circle><circle cx="3" cy="13" r="1.6"></circle><circle cx="21" cy="13" r="1.6"></circle><path d="m9 12.5 1.5 1.5L14.5 10.5"></path></svg>
+            Pet Skin
+          </label>
+          <input type="number" inputmode="numeric" pattern="[0-9]*" id="calc-pet-skin" name="petSkin" min="0" step="1" value="0" data-calc-input />
+        </div>
+
+        <div class="field__error" data-calc-error style="display:none;">Mohon isi semua kolom dengan angka 0 atau lebih.</div>
+
+        <button type="submit" class="btn btn-primary btn-block calc-submit">HITUNG HARGA</button>
+      </form>
+
+      <div class="calc-card calc-result" data-calc-result hidden>
+        <div class="calc-result__head">
+          <span class="eyebrow">Estimasi Harga Akun</span>
+          <p class="calc-result__price" data-calc-total>Rp0</p>
+        </div>
+
+        <div class="calc-breakdown" data-calc-breakdown>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Level</span>
+            <span class="calc-breakdown__value" data-calc-row="level">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Rank</span>
+            <span class="calc-breakdown__value" data-calc-rank-label>-</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Evo Gun Lv.1–3</span>
+            <span class="calc-breakdown__value" data-calc-row="evo1">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Evo Gun Lv.4–6</span>
+            <span class="calc-breakdown__value" data-calc-row="evo2">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Evo Gun Max</span>
+            <span class="calc-breakdown__value" data-calc-row="evo3">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Bundle/Outfit</span>
+            <span class="calc-breakdown__value" data-calc-row="bundle">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Emote</span>
+            <span class="calc-breakdown__value" data-calc-row="emote">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Skin Senjata</span>
+            <span class="calc-breakdown__value" data-calc-row="skin">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Skin Senjata Langka</span>
+            <span class="calc-breakdown__value" data-calc-row="skinRare">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Item Limited</span>
+            <span class="calc-breakdown__value" data-calc-row="limited">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Item Event Lama</span>
+            <span class="calc-breakdown__value" data-calc-row="eventOld">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Vehicle Skin</span>
+            <span class="calc-breakdown__value" data-calc-row="vehicleSkin">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Pet</span>
+            <span class="calc-breakdown__value" data-calc-row="pet">0</span>
+          </div>
+          <div class="calc-breakdown__row">
+            <span class="calc-breakdown__label">Pet Skin</span>
+            <span class="calc-breakdown__value" data-calc-row="petSkin">0</span>
+          </div>
+        </div>
+
+        <div class="calc-rounding">
+          <div class="calc-rounding__row">
+            <span class="calc-rounding__label">Rekomendasi pembulatan</span>
+            <span class="calc-rounding__value calc-rounding__value--suggested" data-calc-rounded>Rp0</span>
+          </div>
+          <p class="calc-rounding__note">Angka pembulatan hanya untuk mempermudah menentukan harga jual, bukan mengubah hasil perhitungan asli di atas.</p>
+        </div>
+
+        <div class="calc-notice payment-warning">
+          <h4>Catatan</h4>
+          <p>Harga di atas hanya merupakan estimasi kasar berdasarkan faktor yang dimasukkan ke kalkulator.</p>
+          <p>Hasil ini bukan harga pasti atau penilaian resmi akun. Harga sebenarnya dapat berbeda berdasarkan kondisi akun, kelangkaan item, pasar, dan faktor lainnya.</p>
+          <p>Untuk informasi dan penilaian lebih lanjut, silakan hubungi Admin Gragon Store.</p>
+        </div>
+
+        <div class="calc-actions">
+          <button type="button" class="btn btn-gold" data-calc-contact-admin>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5Z"></path></svg>
+            HUBUNGI ADMIN
+          </button>
+          <button type="button" class="btn btn-primary" data-calc-sell>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.59 2.59A2 2 0 0 0 11.17 2H4a2 2 0 0 0-2 2v7.17a2 2 0 0 0 .59 1.41l8.7 8.71a2.43 2.43 0 0 0 3.42 0l6.58-6.58a2.43 2.43 0 0 0 0-3.42Z"></path><circle cx="7.5" cy="7.5" r="1.4"></circle></svg>
+            JUAL AKUN INI
+          </button>
+          <button type="button" class="btn" data-calc-reset>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"></path><polyline points="21 3 21 9 15 9"></polyline></svg>
+            HITUNG ULANG
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom">
+        <span data-footer-text>© <span data-current-year></span> Gragon Store. Seluruh hak cipta dilindungi.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.112.3/dist/umd/supabase.js"></script>
+  <script src="js/supabase-client.js?v=20261024f"></script>
+  <script src="js/wa-templates.js?v=20261024f"></script>
+  <script src="js/app.js?v=20261024f"></script>
+  <script src="js/calculator.js?v=20261024f"></script>
+</body>
+</html>
